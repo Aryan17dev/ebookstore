@@ -1,15 +1,16 @@
 import express from "express";
+import dotenv from "dotenv";
 
 const app = express();
 
-const port = process.env.PORT || 8080;
+dotenv.config();
 
-app.get("/", (req, res) => {
-  res.send("<h1>This is our App</h1>");
-});
-app.get("/login", (req, res) => {
-  res.send("<h1>This is our login page</h1>");
-});
+const port = process.env.PORT ;
+
+app.post('/auth/generate-link', (req, res) => {
+    //generate authentication link
+    // send that link to users email 
+})
 
 app.listen(port, () => {
   console.log(`Your app is listening on PORT ${port}`);
