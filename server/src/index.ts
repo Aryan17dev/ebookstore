@@ -1,16 +1,15 @@
 import express from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
+import "@/db/connect";
+import authRouter from "./routes/auth";
 
 const app = express();
 
-dotenv.config();
+const port = process.env.PORT;
 
-const port = process.env.PORT ;
-
-app.post('/auth/generate-link', (req, res) => {
-    //generate authentication link
-    // send that link to users email 
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/auth", authRouter);
 
 app.listen(port, () => {
   console.log(`Your app is listening on PORT ${port}`);
